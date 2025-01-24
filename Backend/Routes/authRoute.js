@@ -1,5 +1,8 @@
 const express=require("express");
 const bcrypt=require("bcryptjs");
+const jwt=require("jsonwebtoken");
+const dotenv=require("dotenv");
+dotenv.config();
 const router=express.Router();
 const userModel=require("../Models/userModel")
 router.get("/",(req,res)=>{
@@ -14,7 +17,7 @@ router.post("/signUp",async(req,res)=>{
         const genSalt = await bcrypt.genSalt(10);
         const hashPassword = await bcrypt.hash(password, genSalt);
 
-        if(password!=confirm_password){
+        if(password!==confirm_password){
            return res.status(401).json({message:"Password do not match"});
         }
         const user=await userModel.create({
@@ -23,7 +26,7 @@ router.post("/signUp",async(req,res)=>{
            mobile,
            password:hashPassword
         })
-        return res.status(200).json({message:"User registered Successfully",user})
+        return res.status(200).json({message:"User registered Successfully",data:user})
        }
 
        res.status(401).json({message:"User already exist"});
@@ -44,15 +47,21 @@ router.post("/login",async(req,res)=>{
         }
         const isPasswordMatch=await bcrypt.compare(password,user.password);
 
-        if(isPasswordMatch){
-            return res.status(200).json({message:"Login successfully"});
+        if(!isPasswordMatch){
+            return res.status(401).json({message:"Invalid email or password"});
         }
-        return res.status(401).json({message:"Invalid email or password"});
-        
+        const payload={
+            id:user._id
+        }
+         const token=jwt.sign(payload,process.env.JWT_SECRET_KEY);
+         res.status(200).json({message:"Login successfully",token});
     } catch (error) {
         console.log(error);
        return  res.status(500).json({message:"Internal Server error"})
     }
+    
+    
+
 })
 
 module.exports=router;
