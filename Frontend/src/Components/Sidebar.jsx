@@ -16,17 +16,17 @@ const Sidebar = () => {
         <ul>
           <li>
             <NavLink to="/dashboard" className={({ isActive }) => (isActive ? styles.active : "")}>
-            <img src={dashboardIcon} alt='' />
+            <img src={dashboardIcon} alt='dashboardIcon' />
             Dashboard</NavLink> 
           </li>
           <li>
             <NavLink to="/links" className={({ isActive }) => (isActive ? styles.active : "")} >
-            <img src={linksIcon} alt='' />
+            <img src={linksIcon} alt='links' />
             Links</NavLink> 
           </li>
           <li>
             <NavLink to="/analytics" className={({ isActive }) => (isActive ? styles.active : "")}>
-            <img src={analyticsIcon} alt='' />
+            <img src={analyticsIcon} alt='analytic' />
             Analytics</NavLink>
           </li>
         </ul>
@@ -34,7 +34,7 @@ const Sidebar = () => {
       <div className={styles.setting}>
         <li>
         <NavLink to="/settings" className={({ isActive }) => (isActive ? styles.active : "")}>
-        <img src={settingIcon} alt='' />
+        <img src={settingIcon} alt='setting' />
         Setting</NavLink>
         </li>
       </div>

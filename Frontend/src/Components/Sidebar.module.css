@@ -4,7 +4,7 @@
 .links ul li{
     list-style: none;
 }
-li .active{
+li .active,li img .active{
     background-color: #F3F7FD ;
     border-radius: 4px;
     color: #1B48DA;

@@ -8,21 +8,73 @@
     border-bottom: 1px solid #ECECF2;;
 }
 .profile h1{
-    font-size: 14px;
+    font-size: 18px;
 }
 .profile p{
-    font-size: 12px;
+    font-size: 14px;
 }
 .createLink{
     display: flex;
-    gap: 5px;
-    align-items: center;
+    gap: 50px;
 }
 .createLink h1{
-    font-size: 12px;
-    padding: 6px;
+    font-size: 16px;
+    padding: 8px;
     background-color: #FDE48A;
     color: #923E0E;
     border-radius: 100%;
 }
+.createLink button{
+    background-color: #1B48DA;
+    border: none;
+    padding: 0px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+    letter-spacing: 1px;
+}
+.searchContainer{
+    position: relative;
+}
+.searchContainer i{
+    position: absolute;
+    top: 30%;
+    left: 2%;
+}
+.searchContainer input[type="search"]{
+    border: 1px solid #ECECF2;
+    border-radius: 5px;
+    padding: 10px 30px;
+}
 
+.profileIcon{
+    cursor: pointer;
+    transition: transform 0.3s ease
+}
+.profileIcon:hover{
+    transform: scale(1.2);
+}
+.logout{
+    position: absolute;
+    right: 2%;
+    top: 9%;
+
+}
+
+.logout p{
+    text-align: center;
+    width: 10vw;
+    cursor: pointer;
+    padding: 12px 24px;
+    border-radius: 4px;
+    color: #878BA9;
+    background-color: #ffffff;
+    border: 1px solid #ECECF2 ;
+}
+.logout p:hover{
+    color: white;
+    background-color: #878BA9;
+    transition: 400ms ease-in-out;
+}

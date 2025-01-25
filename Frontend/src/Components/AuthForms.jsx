@@ -1,13 +1,11 @@
 import React, { useState } from "react";
 import sideImg from "../assets/hero_img.png";
 import axios from "axios";
-
+import { useNavigate } from "react-router-dom";
 import styles from "../Components/AuthForms.module.css";
 const AuthForms = () => {
   const [isLogin, setIsLogin] = useState(false);
   const [activeBtn,setActiveBtn]=useState(1);
-
-
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -15,6 +13,9 @@ const AuthForms = () => {
     password: "",
     confirm_password: "",
   });
+
+  const navigate=useNavigate();
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -37,10 +38,15 @@ const AuthForms = () => {
         },
       });
       if (res.status === 200 || res.status === 201) {
-        console.log("Success:", res.data);
+        localStorage.setItem("user",JSON.stringify(res.data));
         localStorage.setItem("token",res.data.token);
         alert(res.data.message);
-        setIsLogin(true);
+        if(isLogin){
+          navigate("/dashboard")
+        }
+        else{
+          setIsLogin(true);
+        }
       }
       else if (res.status === 400) {
         alert(res.data.message);
@@ -163,18 +169,18 @@ const AuthForms = () => {
               </div>
             </>
           )}
-          <input type='submit' value={isLogin ? "Login" : "Register"} />
+          <input type='submit' style={{cursor:"pointer"}} value={isLogin ? "Login" : "Register"}/>
           {isLogin ? (
             <p>
               Dont have an account?{" "}
-              <span className={styles.link} onClick={() => setIsLogin(false)}>
+              <span className={styles.link} onClick={() => {setIsLogin(false);setActiveBtn(1)}}>
                 Sign Up
               </span>
             </p>
           ) : (
             <p>
               Already have an account?{" "}
-              <span className={styles.link} onClick={() => setIsLogin(true)}>
+              <span className={styles.link} onClick={() => {setIsLogin(true);setActiveBtn(2)}}>
                 Login
               </span>
             </p>
