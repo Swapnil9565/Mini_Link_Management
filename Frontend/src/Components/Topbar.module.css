@@ -1,0 +1,28 @@
+.wrapper{
+    width: 80vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 2px 10px;
+    height: 10vh;
+    border-bottom: 1px solid #ECECF2;;
+}
+.profile h1{
+    font-size: 14px;
+}
+.profile p{
+    font-size: 12px;
+}
+.createLink{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+.createLink h1{
+    font-size: 12px;
+    padding: 6px;
+    background-color: #FDE48A;
+    color: #923E0E;
+    border-radius: 100%;
+}
+

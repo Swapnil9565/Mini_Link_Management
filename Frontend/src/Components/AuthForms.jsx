@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import sideImg from "../assets/hero_img.png";
 import axios from "axios";
+
 import styles from "../Components/AuthForms.module.css";
 const AuthForms = () => {
   const [isLogin, setIsLogin] = useState(false);
   const [activeBtn,setActiveBtn]=useState(1);
+
 
   const [formData, setFormData] = useState({
     name: "",
@@ -38,6 +40,7 @@ const AuthForms = () => {
         console.log("Success:", res.data);
         localStorage.setItem("token",res.data.token);
         alert(res.data.message);
+        setIsLogin(true);
       }
       else if (res.status === 400) {
         alert(res.data.message);

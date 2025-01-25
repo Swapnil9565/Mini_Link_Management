@@ -1,0 +1,13 @@
+.home{
+  display: flex;
+}
+.Sidebar{
+  height: 100vh;
+  width: 20vw;
+  border-right: 1px solid #ECECF2;
+
+}
+.rightSection{
+   display: flex;
+   flex-direction: column;
+}
