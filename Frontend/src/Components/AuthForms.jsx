@@ -40,6 +40,7 @@ const AuthForms = () => {
       if (res.status === 200 || res.status === 201) {
         localStorage.setItem("user",JSON.stringify(res.data));
         localStorage.setItem("token",res.data.token);
+      
         alert(res.data.message);
         if(isLogin){
           navigate("/dashboard")

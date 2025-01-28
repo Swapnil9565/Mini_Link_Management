@@ -54,7 +54,7 @@
     cursor: pointer;
     font-weight: 600;
 }
-form input{
+.formContainer form input{
     margin: 10px 1px;
     padding: 8px 4px;
     width: 30vw;

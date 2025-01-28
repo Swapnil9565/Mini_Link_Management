@@ -1,0 +1,52 @@
+
+.popup{
+   position: absolute;
+   top: 50%;
+   left: 59%;
+  transform: translate(-50%,-50%);
+ 
+}
+
+.popupContainer{
+    width: 25vw;
+    height: 23vh;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: white;
+    border:1px solid  gray;
+    
+}
+.popupContainer i{
+    cursor: pointer;
+    position: absolute;
+    right: 3%;
+}
+.popupContainer p{
+    text-align: center;
+    margin: 30px 0;
+    font-size: 15px;
+}
+.buttons{
+    display: flex;
+    justify-content: space-around;
+    gap: 10px;
+}
+.noBtn{
+    border:none;
+    background-color: #ECECEE;
+    font-weight: 600;
+    width: 8vw;
+    border-radius: 5px;
+    cursor: pointer;
+
+}
+.yesBtn{
+    cursor: pointer;
+    border: none;
+    padding: 4px;
+    border-radius: 5px;
+    background-color: #1B48DA;
+    color: white;
+    font-weight: 600;
+    width: 8vw;
+}

@@ -1,0 +1,67 @@
+.formContainer {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .formGroup {
+    display: flex;
+    align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  }
+  
+  .formGroup label {
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: #181820;
+    font-weight: 700;
+  }
+  
+  .formInput {
+    color: #3B3C51;
+    padding: 3px;
+    border: 1px solid #ECECF2;
+    border-radius: 4px;
+    font-size: 16px;
+    width: 18vw;
+  }
+  
+  .buttonGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 30px;
+  }
+  
+  .saveButton {
+    padding: 10px;
+    background-color: #1B48DA;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+  }
+
+  
+  .deleteButton {
+       padding: 10px;
+    background-color: #EB0D0D;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+  }
+
+  

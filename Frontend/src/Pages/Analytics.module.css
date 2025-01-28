@@ -1,0 +1,15 @@
+.table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  .header {
+    background-color: #f2f2f2;
+    padding: 10px;
+    text-align: left;
+  }
+  
+  .cell {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }

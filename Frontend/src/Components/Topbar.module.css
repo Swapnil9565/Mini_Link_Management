@@ -12,6 +12,7 @@
 }
 .profile p{
     font-size: 14px;
+    margin-left: 25px;
 }
 .createLink{
     display: flex;

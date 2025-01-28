@@ -1,30 +1,30 @@
-import React, { useState } from 'react'
-import Sidebar from './Sidebar'
-import Topbar from './Topbar'
-import { Outlet } from 'react-router-dom'
-import styles from "../Components/Home.module.css"
-import CreateLinkModal from './CreateLinkModal'
-import EditLinkModal from './EditLinkModal'
+import React, { useState } from "react";
+import Sidebar from "./Sidebar";
+import Topbar from "./Topbar";
+import { Outlet } from "react-router-dom";
+import styles from "../Components/Home.module.css";
+import CreateLinkModal from "./CreateLinkModal";
 const Home = () => {
-  const [isOpenModal,setIsOpenModal]=useState(false);
+  const [isOpenModal, setIsOpenModal] = useState(false);
+ 
   return (
-        
     <div className={styles.home}>
-        <div className={styles.Sidebar}>
-        <Sidebar/>
-        </div>
-        <div className={styles.rightSection}>
-        <Topbar setIsOpenModal={setIsOpenModal}/>
+      <div className={styles.Sidebar}>
+        <Sidebar />
+      </div>
+      <div className={styles.rightSection}>
+        <Topbar setIsOpenModal={setIsOpenModal} />
         <Outlet/>
-        <div className={styles.modal}>
-     {isOpenModal?<CreateLinkModal setIsOpenModal={setIsOpenModal}/>:<></>}
-     {/* <EditLinkModal/> */}
-
-        </div>
-        </div>
+        {isOpenModal && (
+          <div className={styles.modal}>
+            <CreateLinkModal setIsOpenModal={setIsOpenModal} />
+          </div>
+        )}
+      
+        {/* <EditLinkModal/> */}
+      </div>
     </div>
-    
-    )
-}
+  );
+};
 
-export default Home
+export default Home;

@@ -1,7 +1,7 @@
 .container{
     height: 70vh;
     width: 40vw;
-    border: 1px solid black;
+    border: 1px solid gray;
     border-radius: 9px;
 }
 .top{
@@ -19,9 +19,16 @@
 .fields{
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 5px;
+}
+.fields label{
+    margin-top: 8px;
 }
 .fields input{
+    width: 100%;
+    border: 1px solid #D1D5DB;
+    padding: 5px;
+    border-radius: 3px;
     width: 100%;
 }
 .fields input::placeholder{
@@ -31,6 +38,8 @@
     height: 18vh;
     padding: 3px 6px;
     width: 100%;
+    border: 1px solid #D1D5DB;
+    border-radius: 3px;
 }
 .formContainer{
     height: 54vh;

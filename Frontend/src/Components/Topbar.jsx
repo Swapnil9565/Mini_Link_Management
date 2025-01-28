@@ -35,7 +35,7 @@ useEffect(()=>{
   if (!token || !user) {
     navigate("/");
   } else {
-    setUserData(JSON.parse(user));
+      setUserData(JSON.parse(user));
   }  
 },[navigate]);
 
@@ -43,7 +43,7 @@ useEffect(()=>{
     <div className={styles.wrapper}>
         <div className={styles.profile}>
             <h1>{partOfDay}, <span>{userData?.user?.name}</span></h1>
-            <p>{userData?.user?.formattedCreatedDate}</p>
+            <p>{userData?.loggedInDate?.split(',').slice(0,2).join(",")}</p>
         </div>
         <div className={styles.createLink}>
             <button onClick={()=>setIsOpenModal(true)}><i className="fa-solid fa-plus"></i>&nbsp; Create New</button>
