@@ -11,7 +11,11 @@ const UrlSchema=mongoose.Schema({
     },
     expirationDate:{
         type: Date,
-        required: true,
+    },
+    shortUrl:{
+        type:String,
+        required:true,
+        unique:true
     }
 },{ timestamps: true });
 

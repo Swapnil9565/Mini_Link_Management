@@ -20,7 +20,7 @@ const CreateLinkModal = ({setIsOpenModal}) => {
                 </div>
                 <div className={styles.fields}>
                     <label htmlFor="">Link Expiration</label>
-                   <input type="datetime-local" name="" id="" />
+                   <input type="date" name="" id="" />
                 </div>
             </form>
         </div>

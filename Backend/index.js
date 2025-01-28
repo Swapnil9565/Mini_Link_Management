@@ -6,12 +6,14 @@ dotenv.config();
 
 const app=express();
 const userRoute=require("./Routes/authRoute");
+const urlRoute=require("./Routes/urlRoute");
 
 app.use(express.json());
 app.use(express.urlencoded({extended:true}))
 app.use(cors());
 
 app.use("/api/user",userRoute);
+app.use("/api/url",urlRoute);
 
 const PORT=process.env.PORT || 5000;
 ConnectDB();

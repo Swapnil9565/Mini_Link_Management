@@ -14,14 +14,14 @@ function LinksPage() {
     {
       date: 'Jan 14, 2025 05:45',
       originalLink: 'https://www.trav',
-      shortLink: 'https://c',
+      shortLink: 'https://cajaf',
       remarks: 'campaign2',
       clicks: 5,
       status: 'Inactive',
     },
     {
       date: 'Jan 14, 2025 07:43',
-      originalLink: 'https://www.trav',
+      originalLink: 'https://www.travhsshhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhanfabbfabfabssssssss',
       shortLink: 'https://c',
       remarks: 'campaign3',
       clicks: 5,
@@ -30,6 +30,7 @@ function LinksPage() {
   ]);
 
   return (
+    <div className={styles.LinksPage}>
     <table className={styles.table}>
       <thead>
         <tr>
@@ -47,18 +48,20 @@ function LinksPage() {
           <tr key={row.date}>
             <td className={styles.cell}>{row.date}</td>
             <td className={styles.cell}>{row.originalLink}</td>
-            <td className={styles.cell}>{row.shortLink}</td>
+            <td className={styles.cell}>{row.shortLink}<i class="fa-regular fa-copy"></i>:</td>
             <td className={styles.cell}>{row.remarks}</td>
             <td className={styles.cell}>{row.clicks}</td>
             <td className={styles.cell}>{row.status}</td>
             <td className={styles.cell}>
-              <button className={styles.actionButton}>Edit</button>
-              <button className={styles.actionButton}>Delete</button>
+              <i class="fa-solid fa-pencil"></i>
+              <i class="fa-solid fa-trash"></i>
             </td>
           </tr>
         ))}
       </tbody>
     </table>
+        
+    </div>
   );
 }
 
