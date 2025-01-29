@@ -23,6 +23,10 @@ app.use("/api/url",urlRoute);
 
 const PORT=process.env.PORT || 5000;
 ConnectDB();
+
+app.get("/",(req,res)=>{
+    res.send("Welcome to the Mini link management system")
+})
 app.listen(PORT,()=>{
     console.log(`Server is running on ${PORT}`);
 })
