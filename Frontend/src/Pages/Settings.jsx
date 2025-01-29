@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from "axios"
-import styles from "../Pages/Settings.module.css";
+import styles from "./Settings.module.css";
 import { useNavigate } from 'react-router-dom';
 import DeleteAccPopup from '../Components/DeleteAccPopup';
 

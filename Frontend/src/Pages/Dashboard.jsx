@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState } from 'react';
-import styles from "../pages/Dashboard.module.css"
+import styles from "./Dashboard.module.css"
 const Dashboard = () => {
  
     const [totalClicks, setTotalClicks] = useState(1234);

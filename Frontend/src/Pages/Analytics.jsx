@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from "../Pages/Analytics.module.css"
+import styles from "./Analytics.module.css"
 import { useState } from 'react';
 const Analytics = () => {
   const [data, setData] = useState([
