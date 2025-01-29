@@ -1,6 +1,7 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const cors = require("cors");
+const awsServerlessExpress = require("aws-serverless-express");
 const ConnectDB = require("./Config/DbConnect");
 
 dotenv.config();
@@ -9,9 +10,8 @@ const app = express();
 const userRoute = require("./Routes/authRoute");
 const urlRoute = require("./Routes/urlRoute");
 
-// ✅ Convert allowed origins to an array
+// CORS Configuration
 const allowedOrigins = process.env.Frontend_URL ? process.env.Frontend_URL.split(",") : [];
-
 const corsOptions = {
     origin: function (origin, callback) {
         if (!origin || allowedOrigins.includes(origin)) {
@@ -23,29 +23,30 @@ const corsOptions = {
     allowedHeaders: ["Content-Type", "Authorization"]
 };
 
-// ✅ Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors(corsOptions));
 
-// ✅ Routes
+// Routes
 app.use("/api/user", userRoute);
 app.use("/api/url", urlRoute);
 
-// ✅ Root Endpoint
+// Root Endpoint
 app.get("/", (req, res) => {
     res.send("Welcome to the Mini Link Management System");
 });
 
-// ✅ Connect to Database before starting the server
-const PORT = process.env.PORT || 5000;
-
+// Connect to MongoDB
 ConnectDB()
-    .then(() => {
-        app.listen(PORT, () => {
-            console.log(`🚀 Server is running on port ${PORT}`);
-        });
-    })
-    .catch((err) => {
-        console.error("❌ Server startup failed due to database connection error.");
+    .then(() => console.log("✅ Database Connected"))
+    .catch(err => {
+        console.error("❌ Database Connection Failed:", err);
+        process.exit(1);
     });
+
+// Create a server for AWS Lambda
+const server = awsServerlessExpress.createServer(app);
+
+exports.handler = (event, context) => {
+    awsServerlessExpress.proxy(server, event, context);
+};
