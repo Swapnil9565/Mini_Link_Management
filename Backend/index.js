@@ -8,10 +8,16 @@ const app=express();
 const userRoute=require("./Routes/authRoute");
 const urlRoute=require("./Routes/urlRoute");
 
+const allowedOrigins = process.env.Frontend_URL;
 
-const corsOptions={
-    origin:process.env.Frontend_URL,
-    methods:["GET","POST","PATCH","PUT","DELETE"],
+const corsOptions = {
+    origin: function (origin, callback) {
+        if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+            callback(null, true);
+        } else {
+            callback(new Error("Not allowed by CORS"));
+        }
+    },
     allowHeaders:["Content-Type","Authorization"]
 }
 app.use(express.json());
