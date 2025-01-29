@@ -8,9 +8,15 @@ const app=express();
 const userRoute=require("./Routes/authRoute");
 const urlRoute=require("./Routes/urlRoute");
 
+
+const corsOptions={
+    origin:process.env.Frontend_URL,
+    methods:["GET","POST","PATCH","PUT","DELETE"],
+    allowHeaders:["Content-Type","Authorization"]
+}
 app.use(express.json());
 app.use(express.urlencoded({extended:true}))
-app.use(cors());
+app.use(cors(corsOptions));
 
 app.use("/api/user",userRoute);
 app.use("/api/url",urlRoute);
