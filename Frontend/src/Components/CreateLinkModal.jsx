@@ -1,5 +1,4 @@
 import React from 'react'
-import toggleBtn from "../assets/toggleBtn.png"
 import styles from "../Components/CreateLinkModal.module.css";
 const CreateLinkModal = ({setIsOpenModal}) => {
   return (
