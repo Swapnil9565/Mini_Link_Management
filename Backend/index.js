@@ -45,4 +45,4 @@ ConnectDB()
     });
 
 // Export as a serverless function using serverless-http
-module.exports.handler = serverless(app);
+module.exports = serverless(app);
