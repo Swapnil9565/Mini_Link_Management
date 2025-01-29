@@ -5,15 +5,25 @@ dotenv.config();
 
 const ConnectDB = async () => {
     try {
-        await mongoose.connect(process.env.MONGO_URL);
+        const dbUri = process.env.MONGO_URL;
+        if (!dbUri) {
+            throw new Error("MongoDB URI (MONGO_URL) is not defined in environment variables.");
+        }
+        await mongoose.connect(dbUri, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+            serverSelectionTimeoutMS: 5000,  
+        });
         console.log("✅ MongoDB Connected Successfully");
     } catch (err) {
         console.error("❌ MongoDB Connection Error:", err);
-        process.exit(1); 
+        throw err;
     }
+
     mongoose.connection.on("disconnected", () => {
         console.warn("⚠️ MongoDB Disconnected. Reconnecting...");
-        ConnectDB();
+      
+        setTimeout(() => ConnectDB(), 5000);  
     });
 
     mongoose.connection.on("error", (err) => {
