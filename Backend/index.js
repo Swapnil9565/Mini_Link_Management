@@ -1,8 +1,8 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const cors = require("cors");
-const serverlessExpress = require("@vendia/serverless-express");
 const ConnectDB = require("./Config/DbConnect");
+const serverless = require("serverless-http");
 
 dotenv.config();
 
@@ -44,4 +44,5 @@ ConnectDB()
         process.exit(1);
     });
 
-exports.handler = serverlessExpress({ app });
+// Export as a serverless function using serverless-http
+module.exports.handler = serverless(app);
