@@ -1,7 +1,7 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const cors = require("cors");
-const awsServerlessExpress = require("aws-serverless-express");
+const serverlessExpress = require("@vendia/serverless-express");
 const ConnectDB = require("./Config/DbConnect");
 
 dotenv.config();
@@ -44,9 +44,4 @@ ConnectDB()
         process.exit(1);
     });
 
-// Create a server for AWS Lambda
-const server = awsServerlessExpress.createServer(app);
-
-exports.handler = (event, context) => {
-    awsServerlessExpress.proxy(server, event, context);
-};
+exports.handler = serverlessExpress({ app });
