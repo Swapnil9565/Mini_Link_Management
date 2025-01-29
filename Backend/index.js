@@ -1,7 +1,7 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const cors = require("cors");
-const ConnectDB = require("./Config/DbConnect");
+const mongoose = require("mongoose");
 const serverless = require("serverless-http");
 
 dotenv.config();
@@ -36,13 +36,27 @@ app.get("/", (req, res) => {
     res.send("Welcome to the Mini Link Management System");
 });
 
-// Connect to MongoDB
-ConnectDB()
-    .then(() => console.log("✅ Database Connected"))
-    .catch(err => {
+const ConnectDB = async () => {
+    try {
+        const dbUri = process.env.MONGODB_URI;
+        const options = {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+            serverSelectionTimeoutMS: 5000,
+        };
+        await mongoose.connect(dbUri, options);
+        console.log("✅ Database Connected");
+    } catch (err) {
         console.error("❌ Database Connection Failed:", err);
-        process.exit(1);
-    });
+        throw err; 
+    }
+};
 
-// Export as a serverless function using serverless-http
+// Connect to the DB
+ConnectDB().catch((err) => {
+    
+    process.exit(1);  
+});
+
+// Export the app as a serverless function
 module.exports = serverless(app);
